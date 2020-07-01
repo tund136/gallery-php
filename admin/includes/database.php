@@ -2,7 +2,7 @@
 require_once("config.php");
 
 class Database {
-    private $connection;
+    public $connection;
 
     function __construct() {
         $this->open_db_connection();
@@ -30,7 +30,7 @@ class Database {
     private function confirmQuery($result) {
 
         if(!$result) {
-            die("Query Failed!".$this->connection->error);
+            die("Query Failed! ".$this->connection->error);
         }
     }
 
@@ -43,7 +43,7 @@ class Database {
 
     // insert id
     public function theInsertId() {
-        return $this->connection_insert_id;
+        return mysqli_insert_id($this->connection);
     }
 }
 

@@ -45,10 +45,8 @@ if(isset($_POST['submit'])) {
 		<div class="form-group">
 			<label for="password">Password</label>
 
-			<input type="password" class="form-control" name="password" required>
-			
+			<input type="password" class="form-control" name="password" required>		
 		</div>
-
 
 		<div class="form-group">
 			<input type="submit" name="submit" value="Submit" class="btn btn-primary">

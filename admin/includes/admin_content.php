@@ -9,9 +9,7 @@
             </h1>
 
             <?php
-            $foundUser = User::findUserById(2);
-            echo $foundUser->username;
-
+            
             ?>
 
             <ol class="breadcrumb">
