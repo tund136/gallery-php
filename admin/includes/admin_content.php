@@ -9,7 +9,12 @@
             </h1>
 
             <?php
-            
+            $photo = new Photo();
+
+            $photo->title = "AAA";
+            $photo->size = 11;
+
+            $photo->create();
             ?>
 
             <ol class="breadcrumb">
