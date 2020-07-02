@@ -11,7 +11,7 @@ class Photo extends DbObject {
     public $size;
 
     public $tmp_path;
-    public $upload_directory = "image";
+    public $upload_directory = "images";
     public $errors = array();
     public $upload_errors_array = array(
         UPLOAD_ERR_OK           => "There is no error.",
@@ -28,12 +28,12 @@ class Photo extends DbObject {
     public function setFile($file) {
         if(empty($file) || !$file || !is_array($file)) {
             $this->errors[] = "There was no file uploaded here";
-            
             return false;
+
         } elseif($file['error'] != 0) {
             $this->errors[] = $this->upload_errors_array[$file['error']];
-
             return false;
+
         } else {
             $this->filename = basename($file['name']);
             $this->tmp_path = $file['tmp_path'];
