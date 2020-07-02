@@ -42,7 +42,9 @@ class Photo extends DbObject {
         }
     }
 
-    
+    public function picturePath() {
+        return $this->upload_directory . DS . $this->filename;
+    }
 
     public function save() {
         if($this->photo_id) {
