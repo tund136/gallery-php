@@ -12,7 +12,7 @@ class Photo extends DbObject {
 
     public $tmp_path;
     public $upload_directory = "image";
-    public $custom_errors = array();
+    public $errors = array();
     public $upload_errors_array = array(
         UPLOAD_ERR_OK           => "There is no error.",
         UPLOAD_ERR_INI_SIZE     => "The uploaded file exceeds the upload_max_filesize directive in php.nit.",
@@ -23,6 +23,41 @@ class Photo extends DbObject {
         UPLOAD_ERR_CANT_WRITE   => "Failed to write file to disk.",
         UPLOAD_ERR_EXTENSION    => "A PHP extension stopped the file upload."
     );
-    
+
+    // basename — Returns trailing name component of path
+    public function setFile($file) {
+        if(empty($file) || !$file || !is_array($file)) {
+            $this->errors[] = "There was no file uploaded here";
+            
+            return false;
+        } elseif($file['error'] != 0) {
+            $this->errors[] = $this->upload_errors_array[$file['error']];
+
+            return false;
+        } else {
+            $this->filename = basename($file['name']);
+            $this->tmp_path = $file['tmp_path'];
+            $this->type = $file['type'];
+            $this->size = $file['size'];
+        }
+    }
+
+    public function save() {
+        if($this->photo_id) {
+            $this->update();
+        } else {
+            if(!empty($this->errors)) {
+                return false;
+            }
+
+            if(empty($this->filename) || empty($this->tmp_path)) {
+                $this->errors[] = "The file was not available";
+                return false;
+            }
+
+            $this->create();
+        }
+    }
+
 }
 ?>
