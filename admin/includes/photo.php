@@ -55,6 +55,8 @@ class Photo extends DbObject {
                 return false;
             }
 
+            $target_path = SITE_ROOT . DS . 'admin' . DS . $this->upload_directory . DS . $this->filename;
+
             $this->create();
         }
     }
