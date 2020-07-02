@@ -42,6 +42,8 @@ class Photo extends DbObject {
         }
     }
 
+    
+
     public function save() {
         if($this->photo_id) {
             $this->update();
