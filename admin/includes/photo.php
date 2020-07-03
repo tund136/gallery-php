@@ -5,8 +5,10 @@ class Photo extends DbObject {
 
     public $id;
     public $title;
+    public $caption;
     public $description;
     public $filename;
+    public $alternate_text;
     public $type;
     public $size;
 
