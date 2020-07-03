@@ -1,7 +1,10 @@
 {
     "cSpell.ignoreWords": [
         "endforeach",
+        "glyphicon",
         "htdocs",
-        "mamp"
+        "mamp",
+        "referrerpolicy",
+        "tinymce"
     ]
 }
