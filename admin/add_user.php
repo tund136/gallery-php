@@ -3,16 +3,22 @@
 
 <?php
 $message = "";
-    
-if(isset($_POST['update'])) {
-    if($photo) {
-        $photo->title = $_POST['title'];
-        $photo->description = $_POST['description'];
 
-        $photo->save();
-        $message = "Update Successfully!";
+$user = new User();
+if(isset($_POST['create'])) {
+    if($user) {
+        $user->username = $_POST['username'];
+        $user->first_name = $_POST['first_name'];
+        $user->last_name = $_POST['last_name'];
+        $user->password = $_POST['password'];
+
+        $user->setFile($_FILES['user_image']);
+
+        $user->saveUserAndImage();
+        $message = "Create Successfully!";
     }
 }
+
 ?>
 
 <!-- Navigation -->
@@ -28,21 +34,42 @@ if(isset($_POST['update'])) {
 <div id="page-wrapper">
 
     <div class="container-fluid">
-
+        
         <!-- Page Heading -->
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header">
-                    Photos
+                    Users
                     <small>Subheading</small>
                 </h1>
-                <form action="" method="post">
-                    <div class="col-md-4">
+                <form action="" method="post" enctype="multipart/form-data">
+                    <div class="col-md-6 col-md-offset-3">
                         <?php echo $message; ?>
                         <div class="form-group">
-                            <label for="title">Title</label>
-                            <input type="text" name="title" class="form-control">
+                            <label for="user_image">User Image</label>
+                            <input type="file" name="user_image">
                         </div>
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input type="text" name="username" class="form-control" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="first_name">First Name</label>
+                            <input type="text" name="first_name" class="form-control" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="last_name">Last Name</label>
+                            <input type="text" name="last_name" class="form-control" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" name="password" class="form-control" required>
+                        </div>
+
+                        <input type="submit" name="create" class="btn btn-primary ">
                     </div>
                 </form>
             </div>
