@@ -44,10 +44,10 @@ $photos = Photo::findAll();
                         <?php foreach ($photos as $photo) : ?>
                             <tr>
                                 <td><img class="admin-photo-thumbnail" src="<?php echo $photo->picturePath(); ?>" alt="">
-                                    <div class="pictures_link">
+                                    <div class="action_link">
                                         <a href="delete_photo.php?photo_id=<?php echo $photo->id; ?>">Delete</a>
                                         <a href="edit_photo.php?photo_id=<?php echo $photo->id; ?>">Edit</a>
-                                        <a href="#">View</a>
+                                        <a href="../photo_page.php?photo_id=<?php echo $photo->id; ?>">View</a>
                                     </div>
                                 </td>
                                 <td><?php echo $photo->id; ?></td>
