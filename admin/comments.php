@@ -1,4 +1,9 @@
 <?php include("includes/header.php"); ?>
+<?php if(!$session->isSignedIn()) {redirect("login.php");} ?>
+
+<?php
+$comments = Comment::findAll();
+?>
 
 <!-- Navigation -->
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -19,16 +24,35 @@
             <div class="col-lg-12">
                 <h1 class="page-header">
                     Comments
-                    <small>Subheading</small>
                 </h1>
-                <ol class="breadcrumb">
-                    <li>
-                        <i class="fa fa-dashboard"></i> <a href="index.html">Dashboard</a>
-                    </li>
-                    <li class="active">
-                        <i class="fa fa-file"></i> Blank Page
-                    </li>
-                </ol>
+                
+                <div class="col-md-12">
+
+                    <table class="table table-hover"> <!-- Start of Table -->
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Author</th>
+                                <th>Body</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                        <?php foreach ($comments as $comment) : ?>
+                            <tr>
+                                <td><?php echo $comment->id; ?>
+                                    <div class="action_links">
+                                        <a href="delete_comment.php?comment_id=<?php echo $comment->id; ?>">Delete</a>
+                                    </div>
+                                </td>
+                                <td><?php echo $comment->author; ?></td>
+                                <td><?php echo $comment->body; ?></td>
+                            </tr>
+                        <?php endforeach; ?>       
+                        </tbody>
+                    </table> <!-- End of Table -->
+                    
+                </div>
             </div>
         </div>
         <!-- /.row -->
