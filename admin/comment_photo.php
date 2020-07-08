@@ -2,7 +2,12 @@
 <?php if(!$session->isSignedIn()) {redirect("login.php");} ?>
 
 <?php
-$comments = Comment::findAll();
+if(empty($_GET['photo_id'])) {
+    redirect("photos.php");
+}
+
+$comments = Comment::findTheComments($_GET['photo_id']);
+
 ?>
 
 <!-- Navigation -->
@@ -42,7 +47,7 @@ $comments = Comment::findAll();
                             <tr>
                                 <td><?php echo $comment->id; ?>
                                     <div class="action_links">
-                                        <a href="delete_comment.php?comment_id=<?php echo $comment->id; ?>">Delete</a>
+                                        <a href="delete_comment_photo.php?comment_id=<?php echo $comment->id; ?>">Delete</a>
                                     </div>
                                 </td>
                                 <td><?php echo $comment->author; ?></td>
