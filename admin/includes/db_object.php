@@ -141,5 +141,17 @@ class DbObject {
         return (mysqli_affected_rows($database->connection) == 1) ? true : false;
     }
 
+    // Count all records in database
+    public static function countAll() {
+        global $database;
+
+        $sql = "SELECT COUNT(*) FROM " . static::$dbTable;
+        $resultSet = $database->query($sql);
+        $row = mysqli_fetch_array($resultSet);
+
+        // array_shift — Shift an element off the beginning of array
+        return array_shift($row); 
+    }
+
 }
 ?>
