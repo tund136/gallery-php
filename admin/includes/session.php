@@ -3,13 +3,24 @@ class Session {
     private $signedIn = false;
     public $userId;
     public $message;
+    public $count;
 
     function __construct() {
         // Start new or resume existing session
         session_start();
 
+        $this->visitorCount();
         $this->checkTheLogin();
         $this->checkMessage();
+    }
+
+    // Counting visitors
+    public function visitorCount() {
+        if(isset($_SESSION['count'])) {
+            return $this->count = $_SESSION['count']++;
+        } else {
+            return $_SESSION['count'] = 1;
+        }
     }
 
     public function message($msg) {
