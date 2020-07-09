@@ -88,7 +88,7 @@ if (isset($_POST['update'])) {
                             <input type="password" name="password" class="form-control" required>
                         </div>
 
-                        <a href="delete_user?user_id=<?php echo $user->id; ?>" class="btn btn-danger">Delete</a>
+                        <a id="user-id" href="delete_user?user_id=<?php echo $user->id; ?>" class="btn btn-danger">Delete</a>
                         <input type="submit" name="update" class="btn btn-primary" value="Update">
                     </form>
                 </div>
