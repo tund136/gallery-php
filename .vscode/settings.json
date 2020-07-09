@@ -5,6 +5,7 @@
         "htdocs",
         "mamp",
         "referrerpolicy",
+        "tabindex",
         "tinymce"
     ]
 }
