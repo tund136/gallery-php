@@ -95,6 +95,23 @@ class User extends DbObject {
 
         $this->save();
     }
+
+    // Using Ajax to save user image
+    public function ajaxSaveUserImage($user_image, $user_id) {
+        global $database;
+
+        $user_image = $database->escapeString($user_image);
+        $user_id = $database->escapeString($user_id);
+
+        $this->user_image   = $user_image;
+        $this->id           = $user_id;
+
+        $sql = "UPDATE " . self::$dbTable . " SET user_image = '{$this->user_image}'";
+        $sql .= " WHERE id = {$this->id}";
+
+        $update_image = $database->query($sql);
+        echo $this->imagePathAndPlaceholder();
+    }
 }
 
 ?>

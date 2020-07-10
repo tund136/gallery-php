@@ -55,7 +55,7 @@ if (isset($_POST['update'])) {
                     <small></small>
                 </h1>
 
-                <div class="col-md-6">
+                <div class="col-md-6 user_image_box">
                     <a href="#" data-toggle="modal" data-target="#photo-library"><img class="img-responsive" src="<?php echo $user->imagePathAndPlaceholder(); ?>" alt=""></a>
                 </div>
 
