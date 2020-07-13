@@ -25,6 +25,8 @@ $photos = Photo::findAll();
                 <h1 class="page-header">
                     Photos
                 </h1>
+
+                <p class="bg-success"><?php echo $message; ?></p>
                 
                 <div class="col-md-12">
 
