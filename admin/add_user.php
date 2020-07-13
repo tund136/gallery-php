@@ -13,9 +13,11 @@ if(isset($_POST['create'])) {
         $user->password = $_POST['password'];
 
         $user->setFile($_FILES['user_image']);
-
         $user->saveUserAndImage();
-        $message = "Create Successfully!";
+        
+        $session->message("The {$user->filename} has been added!");
+
+        redirect("users.php");
     }
 }
 
