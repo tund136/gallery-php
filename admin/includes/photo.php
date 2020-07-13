@@ -95,5 +95,16 @@ class Photo extends DbObject {
         }
     }
 
+    public static function displaySidebarData($photo_id) {
+        $photo = Photo::findById($photo_id);
+        
+        $output = "<a href='#' class='thumbnail'><img width='100' src='{$photo->picturePath()}' alt=''></a>";
+        $output .= "<p>{$photo->filename}</p>";
+        $output .= "<p>{$photo->type}</p>";
+        $output .= "<p>{$photo->size}</p>";
+
+        echo $output;
+    }
+
 }
 ?>
