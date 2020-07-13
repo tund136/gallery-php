@@ -112,6 +112,18 @@ class User extends DbObject {
         $update_image = $database->query($sql);
         echo $this->imagePathAndPlaceholder();
     }
+
+    // Deleting photo
+    public function deletePhoto() {
+        if($this->delete()) {
+            $target_path = SITE_ROOT . DS . 'admin' . DS . $this->picturePath();
+
+            // unlink — Deletes a file
+            return unlink($target_path) ? true : false;
+        } else {
+            return false;
+        }
+    }
 }
 
 ?>

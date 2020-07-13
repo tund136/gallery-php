@@ -40,7 +40,7 @@ if(isset($_POST['create'])) {
             <div class="col-lg-12">
                 <h1 class="page-header">
                     Users
-                    <small>Subheading</small>
+                    <small>Add User</small>
                 </h1>
                 <form action="" method="post" enctype="multipart/form-data">
                     <div class="col-md-6 col-md-offset-3">
