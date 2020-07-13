@@ -10,6 +10,8 @@
 
     if($user) {
         $user->delete();
+        $session->message("The '{$user->username}' user has been deleted!");
+
         redirect("users.php");
     } else {
         redirect("users.php");

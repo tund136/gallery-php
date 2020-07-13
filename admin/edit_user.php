@@ -13,6 +13,7 @@ if (empty($_GET['user_id'])) {
 }
 
 $user = User::findById($_GET['user_id']);
+
 if (isset($_POST['update'])) {
     if ($user) {
         $user->first_name = $_POST['first_name'];
@@ -20,14 +21,20 @@ if (isset($_POST['update'])) {
         $user->password = $_POST['password'];
         if (empty($_FILES['user_image'])) {
             $user->save();
+            $session->message("The user has been updated!");
+
+            redirect("users.php");
+
         } else {
             $user->setFile($_FILES['user_image']);
             $user->saveUserAndImage();
             $user->save();
+            $session->message("The user has been updated!");
 
-            redirect("edit_user.php?user_id={$user->id}");
+            // redirect("edit_user.php?user_id={$user->id}");
+            redirect("users.php");
+            
         }
-        $message = "Update Successfully!";
     }
 }
 
