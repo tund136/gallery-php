@@ -49,6 +49,12 @@ $(document).ready(function () {
         });
     });
 
+    // Edit Photo Side Bar
+    $(".info-box-header").click(function () {
+        $(".inside").slideToggle("fast");
+        $("#toggle").toggleClass("glyphicon-menu-down glyphicon, glyphicon-menu-up glyphicon");
+    });
+
     // TinyMCE
     tinymce.init({selector: 'textarea'});
 });

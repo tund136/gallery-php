@@ -14,7 +14,6 @@ if(empty(isset($_GET['photo_id']))) {
             $photo->description = $_POST['description'];
 
             $photo->save();
-            $message = "Update Successfully!";
         }
     }
 }
@@ -44,7 +43,6 @@ if(empty(isset($_GET['photo_id']))) {
                 </h1>
                 <form action="" method="post">
                     <div class="col-md-8">
-                        <?php echo $message; ?>
                         <div class="form-group">
                             <label for="title">Title</label>
                             <input type="text" name="title" class="form-control" value="<?php echo $photo->title; ?>">
