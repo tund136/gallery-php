@@ -13,3 +13,6 @@ PHP is a popular general-purpose scripting language that is especially suited to
 
 ## Requirements ##
 * [PHP 5.4.0 or higher](https://www.php.net/)
+
+## Installation ##
+You can import tables from [phpMyAdmin file](https://github.com/tund136/gallery-php/blob/master/phpMyAdmin) to use database.
